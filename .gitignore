@@ -25,3 +25,4 @@ config.json
 # 其他
 /dist/
 /build/
+/*_log.txt

@@ -300,13 +300,24 @@ class EnhancedBatchSSH:
             error = stderr.read().decode()
             
             # 显示结果
-            self.show_result(f"\n[{host} - {datetime.now()}]\n{command}\n{result}{error}\n")
+            log_entry = f"\n[{host} - {datetime.now()}]\n{command}\n{result}{error}\n"
+            self.show_result(log_entry)
+            
+            # 将结果写入日志文件
+            with open("execution_log.txt", "a") as log_file:
+                log_file.write(log_entry)
             
             # 更新状态
             self.host_tree.set(item, 'status', '完成')
             
         except Exception as e:
-            self.show_result(f"\n[{host}] Error: {str(e)}\n")
+            error_message = f"\n[{host}] Error: {str(e)}\n"
+            self.show_result(error_message)
+            
+            # 将错误信息写入日志文件
+            with open("execution_log.txt", "a") as log_file:
+                log_file.write(error_message)
+            
             self.host_tree.set(item, 'status', '失败')
             
             # 删除失败的连接
