@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+
+# 环境
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# 配置文件
+config.json
+
+# IDE配置
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 其他
+/dist/
+/build/
